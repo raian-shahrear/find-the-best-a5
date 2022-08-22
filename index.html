@@ -23,13 +23,13 @@
     </section>
     <!-- header images -->
     <section>
-      <div class="absolute -bottom-14 -left-14">
-        <img class="w-1/2" src="./images/cover/bottom-left.png" alt="player-in-action">
+      <div class="absolute md:-bottom-8 lg:-bottom-14 md:-left-10 lg:-left-14">
+        <img class="w-2/5 lg:w-1/2" src="./images/cover/bottom-left.png" alt="player-in-action">
       </div>
       <div class="absolute -bottom-6 right-0">
         <img src="./images/cover/bottom-right.png" alt="football">
       </div>
-      <div class="absolute top-28 right-28">
+      <div class="absolute top-28 md:right-0 lg:right-28">
         <img src="./images/cover/top-right.png" alt="player-card">
       </div>
     </section>
@@ -39,7 +39,7 @@
     <section class="w-10/12 mx-auto mt-20 mb-36 flex justify-between">
       <!-- Player Info Card -->
       <section>
-        <div class="grid grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <!-- player 1 -->
           <div class="card w-96 bg-base-100 shadow-xl rounded-none">
             <figure><img src="./images/players/kylian-mbappe.jpg" alt="player 1" /></figure>
@@ -179,9 +179,9 @@
 
 
       <!-- Player list and Calculation Form -->
-      <aside>
+      <aside class="">
         <!-- Player List -->
-        <div class="h-64 w-80 bg-zinc-800 py-4 px-12">
+        <div class="h-72 md:w-60 lg:w-80 bg-zinc-800 py-4 md:px-8 lg:px-12">
           <h2 class="text-center text-3xl font-semibold text-slate-200 ">Selected - <span id="selected-player">0</span></h2>
           <div class="mt-10 text-slate-200 text-lg">
             <ol id="player-name-list" class="list-decimal">
@@ -191,7 +191,7 @@
         </div>
 
         <!-- Calculation Form -->
-        <div class="h-auto w-80 bg-zinc-800 py-4 px-10 mt-6">
+        <div class="h-auto md:w-60 lg:w-80 bg-zinc-800 py-4 md:px-5 lg:px-10 mt-6">
           <h2 class="text-center text-3xl font-semibold text-slate-200 ">Budget</h2>
           <div class="mt-10">
             <div class="grid grid-cols-3 items-center">
