@@ -1,3 +1,4 @@
+// Get and Set Value to The Input Field
 function getInputValueById(inputId){
   const inputField = document.getElementById(inputId);
   const inputValueInString = inputField.value;
@@ -11,6 +12,8 @@ function setInputValue_BackgroundById(inputId){
   inputField.style.backgroundColor = '#fab1a0';
 }
 
+
+// Get and Set Value to The Element Field
 function getElementValueById(elementId){
   const elementField = document.getElementById(elementId);
   const elementValueInString = elementField.innerText;

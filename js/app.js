@@ -10,8 +10,10 @@ function selectedPlayerList(playerCollection){
   }
 }
 
-const playerCollection =[];
 
+/* Event handler added to the Select Btn
+---------------------------------------*/
+const playerCollection =[];
 function selectPlayer(event){
   const playerName = event.parentNode.parentNode.children[0].innerText;
   playerCollection.push(playerName);
@@ -33,9 +35,12 @@ function selectPlayer(event){
 }
 
 
+/* Event handler added to the Calculate Btn
+-----------------------------------------*/
 document.getElementById('salary-calculation').addEventListener('click', function(){
   const playerSalaryInput = document.getElementById('player-salary-input');
   const playerSalaryAmount = getInputValueById('player-salary-input');
+
   const selectedPlayer = getElementValueById('selected-player');
 
   if(playerSalaryInput === '' || isNaN(playerSalaryAmount) || playerSalaryAmount < 0){
@@ -50,6 +55,8 @@ document.getElementById('salary-calculation').addEventListener('click', function
 })
 
 
+/* Event handler added to the Calculate Total Btn
+-----------------------------------------------*/
 document.getElementById('total-calculation').addEventListener('click', function(){
   const playerExpenses = getElementValueById('player-expenses');
 
