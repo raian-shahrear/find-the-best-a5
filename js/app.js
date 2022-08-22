@@ -28,6 +28,9 @@ function selectPlayer(event){
       }
     }
   }
+  else{
+    alert("Can't be added more than 5 players!")
+  }
 }
 
 
@@ -40,10 +43,15 @@ document.getElementById('salary-calculation').addEventListener('click', function
   const selectedPlayerInString = selectedPlayerField.innerText;
   const selectedPlayer = parseInt(selectedPlayerInString);
 
-  const playerExpenses = selectedPlayer * playerSalaryAmount
-
-  const playerExpensesField = document.getElementById('player-expenses');
-  playerExpensesField.innerText = playerExpenses;
+  if(playerSalaryInput === '' || isNaN(playerSalaryAmount)){
+    alert('Please input a valid amount !!!')
+    playerSalaryInput.value = '';
+  }
+  else{
+    const playerExpenses = selectedPlayer * playerSalaryAmount;
+    const playerExpensesField = document.getElementById('player-expenses');
+    playerExpensesField.innerText = playerExpenses;
+  }
 })
 
 
@@ -60,8 +68,19 @@ document.getElementById('total-calculation').addEventListener('click', function(
   const coachSalaryInString = coachSalaryField.value;
   const coachSalary = parseInt(coachSalaryInString);
 
-  const grandTotal = playerExpenses + managerSalary + coachSalary;
-
-  const grandTotalField = document.getElementById('grand-total');
-  grandTotalField.innerText = grandTotal;
+  if((managerSalaryField === '' || isNaN(managerSalary)) || (coachSalaryField === '' || isNaN(coachSalary))){
+    if(managerSalaryField === '' || isNaN(managerSalary)){
+      alert('Please input a valid amount !!!')
+      managerSalaryField.value = '';
+    }
+    else if(coachSalaryField === '' || isNaN(coachSalary)){
+      alert('Please input a valid amount !!!')
+      coachSalaryField.value = '';
+    }
+  }
+  else{
+    const grandTotal = playerExpenses + managerSalary + coachSalary;
+    const grandTotalField = document.getElementById('grand-total');
+    grandTotalField.innerText = grandTotal;
+  }
 })
