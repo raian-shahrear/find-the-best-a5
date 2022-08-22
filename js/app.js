@@ -40,9 +40,9 @@ function selectPlayer(event){
 document.getElementById('salary-calculation').addEventListener('click', function(){
   const playerSalaryInput = document.getElementById('player-salary-input');
   const playerSalaryAmount = getInputValueById('player-salary-input');
-
   const selectedPlayer = getElementValueById('selected-player');
 
+  // checking the input field id Empty or string or Negative value
   if(playerSalaryInput === '' || isNaN(playerSalaryAmount) || playerSalaryAmount < 0){
     alert('Please input a valid amount for Player field !!!')
     setInputValue_BackgroundById('player-salary-input');
@@ -59,24 +59,26 @@ document.getElementById('salary-calculation').addEventListener('click', function
 -----------------------------------------------*/
 document.getElementById('total-calculation').addEventListener('click', function(){
   const playerExpenses = getElementValueById('player-expenses');
-
   const managerSalaryField = document.getElementById('manager-salary');
   const managerSalary = getInputValueById('manager-salary');
-
   const coachSalaryField = document.getElementById('coach-salary');
   const coachSalary = getInputValueById('coach-salary');
-
+  
+  // checking the input field id Empty or string or Negative value
   if((managerSalaryField === '' || isNaN(managerSalary) || managerSalary < 0) || (coachSalaryField === '' || isNaN(coachSalary) || coachSalary < 0)){
+    // alert when Both field will be wronged
     if((managerSalaryField === '' || isNaN(managerSalary) || managerSalary < 0) && (coachSalaryField === '' || isNaN(coachSalary) || coachSalary < 0)){
       alert('Please input a valid amount for Both field !!!')
       setInputValue_BackgroundById('manager-salary');
       setInputValue_BackgroundById('coach-salary');
     }
+    // alert when only Manager field will be wronged
     else if(managerSalaryField === '' || isNaN(managerSalary) || managerSalary < 0){
       alert('Please input a valid amount for Manager field !!!')
       setInputValue_BackgroundById('manager-salary');
       coachSalaryField.style.backgroundColor = 'white'
     }
+    // alert when only Coach field will be wronged
     else if(coachSalaryField === '' || isNaN(coachSalary) || coachSalary < 0){
       alert('Please input a valid amount for Coach field !!!')
       setInputValue_BackgroundById('coach-salary');
