@@ -45,3 +45,23 @@ document.getElementById('salary-calculation').addEventListener('click', function
   const playerExpensesField = document.getElementById('player-expenses');
   playerExpensesField.innerText = playerExpenses;
 })
+
+
+document.getElementById('total-calculation').addEventListener('click', function(){
+  const playerExpensesField = document.getElementById('player-expenses');
+  const playerExpensesInString = playerExpensesField.innerText;
+  const playerExpenses = parseInt(playerExpensesInString);
+
+  const managerSalaryField = document.getElementById('manager-salary');
+  const managerSalaryInString = managerSalaryField.value;
+  const managerSalary = parseInt(managerSalaryInString);
+
+  const coachSalaryField = document.getElementById('coach-salary');
+  const coachSalaryInString = coachSalaryField.value;
+  const coachSalary = parseInt(coachSalaryInString);
+
+  const grandTotal = playerExpenses + managerSalary + coachSalary;
+
+  const grandTotalField = document.getElementById('grand-total');
+  grandTotalField.innerText = grandTotal;
+})

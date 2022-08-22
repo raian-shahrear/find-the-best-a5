@@ -191,18 +191,18 @@
             </div>
             <div class="grid grid-cols-3 items-center mt-6 mb-4">
               <span class="text-slate-200 text-lg col-auto">Manager</span>
-              <input type="text" class="col-span-2 ml-3 p-2" placeholder="Salary per month">
+              <input type="text" id="manager-salary" class="col-span-2 ml-3 p-2" placeholder="Salary per month">
             </div>
             <div class="grid grid-cols-3 items-center">
               <span class="text-slate-200 text-lg col-auto">Coach</span>
-              <input type="text" class="col-span-2 ml-3 p-2" placeholder="Salary per month">
+              <input type="text" id="coach-salary" class="col-span-2 ml-3 p-2" placeholder="Salary per month">
             </div>
             <div class="card-actions justify-center mt-5">
-              <button class="btn btn-primary bg-sky-700 hover:bg-sky-900 w-full rounded-none text-lg capitalize">Calculate total</button>
+              <button id="total-calculation" class="btn btn-primary bg-sky-700 hover:bg-sky-900 w-full rounded-none text-lg capitalize">Calculate total</button>
             </div>
             <div class="text-slate-200 text-lg grid grid-cols-3 items-center mt-5">
               <p class="col-span-2">Total</p>
-              <p class="col-auto">$<span>00</span></p>
+              <p class="col-auto">$<span id="grand-total">00</span></p>
             </div>
           </div>
         </div>
