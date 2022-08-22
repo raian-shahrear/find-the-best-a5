@@ -3,7 +3,7 @@ function selectedPlayerList(playerCollection){
   playerNameList.innerHTML = '';
   for(let i = 0; i < playerCollection.length; i++){
     const eachPlayer = playerCollection[i];
-
+    // list created
     const li = document.createElement('li');
     li.innerText = eachPlayer;
     playerNameList.appendChild(li);
@@ -15,13 +15,12 @@ const playerCollection =[];
 function selectPlayer(event){
   const playerName = event.parentNode.parentNode.children[0].innerText;
   playerCollection.push(playerName);
-  
-  
+  // only 5 players can be selected
   if(playerCollection.length <= 5){
     document.getElementById('selected-player').innerText = playerCollection.length;
-
+    // pass the new array to selectedPlayerList function
     selectedPlayerList(playerCollection);
-
+    // button will be disabled if selected 5
     for(let i = 0; i < playerCollection.length; i++){
       if(playerCollection[i].includes(playerName)){
         event.setAttribute('disabled', true);
@@ -36,51 +35,51 @@ function selectPlayer(event){
 
 document.getElementById('salary-calculation').addEventListener('click', function(){
   const playerSalaryInput = document.getElementById('player-salary-input');
-  const playerSalaryAmountInString = playerSalaryInput.value;
-  const playerSalaryAmount = parseInt(playerSalaryAmountInString);
+  const playerSalaryAmount = getInputValueById('player-salary-input');
+  const selectedPlayer = getElementValueById('selected-player');
 
-  const selectedPlayerField = document.getElementById('selected-player');
-  const selectedPlayerInString = selectedPlayerField.innerText;
-  const selectedPlayer = parseInt(selectedPlayerInString);
-
-  if(playerSalaryInput === '' || isNaN(playerSalaryAmount)){
-    alert('Please input a valid amount !!!')
-    playerSalaryInput.value = '';
+  if(playerSalaryInput === '' || isNaN(playerSalaryAmount) || playerSalaryAmount < 0){
+    alert('Please input a valid amount for Player field !!!')
+    setInputValue_BackgroundById('player-salary-input');
   }
   else{
     const playerExpenses = selectedPlayer * playerSalaryAmount;
-    const playerExpensesField = document.getElementById('player-expenses');
-    playerExpensesField.innerText = playerExpenses;
+    setElementValueById('player-expenses', playerExpenses);
+    playerSalaryInput.style.backgroundColor = 'white'
   }
 })
 
 
 document.getElementById('total-calculation').addEventListener('click', function(){
-  const playerExpensesField = document.getElementById('player-expenses');
-  const playerExpensesInString = playerExpensesField.innerText;
-  const playerExpenses = parseInt(playerExpensesInString);
+  const playerExpenses = getElementValueById('player-expenses');
 
   const managerSalaryField = document.getElementById('manager-salary');
-  const managerSalaryInString = managerSalaryField.value;
-  const managerSalary = parseInt(managerSalaryInString);
+  const managerSalary = getInputValueById('manager-salary');
 
   const coachSalaryField = document.getElementById('coach-salary');
-  const coachSalaryInString = coachSalaryField.value;
-  const coachSalary = parseInt(coachSalaryInString);
+  const coachSalary = getInputValueById('coach-salary');
 
-  if((managerSalaryField === '' || isNaN(managerSalary)) || (coachSalaryField === '' || isNaN(coachSalary))){
-    if(managerSalaryField === '' || isNaN(managerSalary)){
-      alert('Please input a valid amount !!!')
-      managerSalaryField.value = '';
+  if((managerSalaryField === '' || isNaN(managerSalary) || managerSalary < 0) || (coachSalaryField === '' || isNaN(coachSalary) || coachSalary < 0)){
+    if((managerSalaryField === '' || isNaN(managerSalary) || managerSalary < 0) && (coachSalaryField === '' || isNaN(coachSalary) || coachSalary < 0)){
+      alert('Please input a valid amount for Both field !!!')
+      setInputValue_BackgroundById('manager-salary');
+      setInputValue_BackgroundById('coach-salary');
     }
-    else if(coachSalaryField === '' || isNaN(coachSalary)){
-      alert('Please input a valid amount !!!')
-      coachSalaryField.value = '';
+    else if(managerSalaryField === '' || isNaN(managerSalary) || managerSalary < 0){
+      alert('Please input a valid amount for Manager field !!!')
+      setInputValue_BackgroundById('manager-salary');
+      coachSalaryField.style.backgroundColor = 'white'
+    }
+    else if(coachSalaryField === '' || isNaN(coachSalary) || coachSalary < 0){
+      alert('Please input a valid amount for Coach field !!!')
+      setInputValue_BackgroundById('coach-salary');
+      managerSalaryField.style.backgroundColor = 'white'
     }
   }
   else{
     const grandTotal = playerExpenses + managerSalary + coachSalary;
-    const grandTotalField = document.getElementById('grand-total');
-    grandTotalField.innerText = grandTotal;
+    setElementValueById('grand-total', grandTotal);
+    managerSalaryField.style.backgroundColor = 'white'
+    coachSalaryField.style.backgroundColor = 'white'
   }
 })
