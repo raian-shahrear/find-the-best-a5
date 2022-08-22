@@ -1,3 +1,4 @@
+/* Creating selected 5 list */
 function selectedPlayerList(playerCollection){
   const playerNameList = document.getElementById("player-name-list");
   playerNameList.innerHTML = '';
@@ -14,6 +15,7 @@ function selectedPlayerList(playerCollection){
 /* Event handler added to the Select Btn
 ---------------------------------------*/
 const playerCollection =[];
+
 function selectPlayer(event){
   const playerName = event.parentNode.parentNode.children[0].innerText;
   playerCollection.push(playerName);
@@ -46,6 +48,7 @@ document.getElementById('salary-calculation').addEventListener('click', function
   if(playerSalaryInput === '' || isNaN(playerSalaryAmount) || playerSalaryAmount < 0){
     alert('Please input a valid amount for Player field !!!')
     setInputValue_BackgroundById('player-salary-input');
+    setElementValueById('player-expenses', '0');
   }
   else{
     const playerExpenses = selectedPlayer * playerSalaryAmount;
@@ -71,17 +74,20 @@ document.getElementById('total-calculation').addEventListener('click', function(
       alert('Please input a valid amount for Both field !!!')
       setInputValue_BackgroundById('manager-salary');
       setInputValue_BackgroundById('coach-salary');
+      setElementValueById('grand-total', playerExpenses);
     }
     // alert when only Manager field will be wronged
     else if(managerSalaryField === '' || isNaN(managerSalary) || managerSalary < 0){
       alert('Please input a valid amount for Manager field !!!')
       setInputValue_BackgroundById('manager-salary');
+      setElementValueById('grand-total', (playerExpenses + coachSalary));
       coachSalaryField.style.backgroundColor = 'white'
     }
     // alert when only Coach field will be wronged
     else if(coachSalaryField === '' || isNaN(coachSalary) || coachSalary < 0){
       alert('Please input a valid amount for Coach field !!!')
       setInputValue_BackgroundById('coach-salary');
+      setElementValueById('grand-total', (playerExpenses + managerSalary));
       managerSalaryField.style.backgroundColor = 'white'
     }
   }
